@@ -47,8 +47,8 @@ export default function Contact() {
                 </div>
                 <div className="contact-card">
                   <MapPin color="#1677ff" />
-                  <strong>Operating from</strong>
-                  <span>Bengaluru, India · Serving UK & US clients</span>
+                  <strong>Global delivery</strong>
+                  <span>High-precision traffic analytics & survey data</span>
                 </div>
               </div>
               <p className="contact-note">
@@ -60,7 +60,7 @@ export default function Contact() {
 
             <ContactForm
               services={services}
-              accessKey={process.env.WEB3FORMS_ACCESS_KEY}
+              accessKey={process.env.WEB3FORMS_ACCESS_KEY || "f5828772-a9b3-4e91-adb2-5f60e9657e28"}
             />
           </div>
         </section>

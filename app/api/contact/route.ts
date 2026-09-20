@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     }
 
     const recipientEmail = process.env.CONTACT_EMAIL || "info@trafenix.com";
-    const web3FormsKey = process.env.WEB3FORMS_ACCESS_KEY;
+    const web3FormsKey = process.env.WEB3FORMS_ACCESS_KEY || "f5828772-a9b3-4e91-adb2-5f60e9657e28";
     const resendKey = process.env.RESEND_API_KEY;
 
     console.log("==========================================");

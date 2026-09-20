@@ -26,7 +26,8 @@ export function ContactForm({ services, accessKey }: ContactFormProps) {
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isMockMode, setIsMockMode] = useState(false);
+
+  const effectiveKey = accessKey || "f5828772-a9b3-4e91-adb2-5f60e9657e28";
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -41,67 +42,57 @@ export function ContactForm({ services, accessKey }: ContactFormProps) {
     setErrorMessage("");
 
     try {
-      if (accessKey) {
-        // Honeypot check
-        if (formData.botcheck) {
-          setStatus("success");
-          return;
-        }
-
-        const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            access_key: accessKey,
-            subject: `New Project Enquiry: ${formData.service || "Traffic Analysis"} - ${formData.name}`,
-            from_name: formData.name,
-            replyto: formData.email,
-            name: formData.name,
-            email: formData.email,
-            company: formData.company || "Not specified",
-            location: formData.location || "Not specified",
-            service: formData.service || "Not sure",
-            message: formData.details,
-            botcheck: formData.botcheck,
-          }),
-        });
-
-        const data = (await res.json()) as Record<string, any>;
-        if (!data.success) {
-          throw new Error(data.message || "Failed to send message. Please check your details and try again.");
-        }
-
-        // Also ping internal API in background for terminal logging
-        fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }).catch(() => {});
-
-        setIsMockMode(false);
+      // Honeypot check
+      if (formData.botcheck) {
         setStatus("success");
         return;
       }
 
-      const response = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: effectiveKey,
+          subject: `New Project Enquiry: ${formData.service || "Traffic Analysis"} - ${formData.name}`,
+          from_name: formData.name,
+          replyto: formData.email,
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || "Not specified",
+          location: formData.location || "Not specified",
+          service: formData.service || "Not sure",
+          message: formData.details,
+          botcheck: formData.botcheck,
+        }),
       });
 
-      const data = (await response.json()) as Record<string, any>;
-
-      if (!response.ok || data.error) {
-        throw new Error(data.error || "Failed to send message. Please try again.");
+      const data = (await res.json()) as Record<string, any>;
+      if (!data.success) {
+        // Fallback to internal API if direct submission was blocked
+        const fallbackRes = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        const fallbackData = (await fallbackRes.json()) as Record<string, any>;
+        if (!fallbackRes.ok || fallbackData.error) {
+          throw new Error(data.message || fallbackData.error || "Failed to send message. Please try again.");
+        }
+      } else {
+        // Ping internal API in background for terminal/server logging
+        fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }).catch(() => {});
       }
 
-      setIsMockMode(Boolean(data.isMock));
       setStatus("success");
     } catch (err: any) {
       console.error(err);
@@ -139,11 +130,6 @@ export function ContactForm({ services, accessKey }: ContactFormProps) {
         <div className="feedback-meta">
           <span>We will respond to <strong>{formData.email}</strong> within 24 hours on working days.</span>
         </div>
-        {isMockMode && (
-          <div className="feedback-note dev-note">
-            ℹ️ <em>Local test mode: Enquiry details logged in terminal. To receive live emails, add your <code>WEB3FORMS_ACCESS_KEY</code> or <code>RESEND_API_KEY</code> in <code>.env.local</code>.</em>
-          </div>
-        )}
         <button type="button" className="button" onClick={handleReset} style={{ marginTop: "16px" }}>
           Send another enquiry
         </button>
