@@ -1,0 +1,3 @@
+import { Logo } from "./logo";
+const links = [["Services", "/services"], ["How it works", "/#process"], ["Packages", "/#packages"], ["About", "/about"], ["Contact", "/contact"]];
+export function SiteHeader() { return <header className="site-header"><div className="shell header-inner"><Logo/><nav className="desktop-nav" aria-label="Primary navigation">{links.map(([label,href])=><a key={href} href={href}>{label}</a>)}<a className="button small" href="/contact">Get a quote</a></nav><details className="mobile-nav"><summary aria-label="Open navigation"><span></span><span></span><span></span></summary><nav>{links.map(([label,href])=><a key={href} href={href}>{label}</a>)}</nav></details></div></header>; }
