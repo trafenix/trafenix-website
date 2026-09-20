@@ -1348,3 +1348,380 @@
   }
 }
 
+/* ==========================================================================
+   TYPOGRAPHY SYSTEM (@1x SPECIFICATION & SCALE MATRIX)
+   ========================================================================== */
+.typo-showcase-container {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+.typo-showcase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.typo-eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #1677ff;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.typo-main-title {
+  font-size: 30px;
+  font-weight: 850;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.typo-spec-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.typo-family-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.typo-family-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.family-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.family-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.primary-badge {
+  background: #eff6ff;
+  color: #1677ff;
+  border: 1px solid #bfdbfe;
+}
+
+.body-badge {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.mono-badge {
+  background: #faf5ff;
+  color: #9333ea;
+  border: 1px solid #e9d5ff;
+}
+
+.family-role {
+  font-size: 11.5px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.family-glyph-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.family-big-glyph {
+  font-size: 52px;
+  font-weight: 850;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.family-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.family-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 2px 0;
+}
+
+.family-weights {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.family-alphabet,
+.family-sample,
+.family-code-sample {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+  min-height: 56px;
+}
+
+.family-code-sample {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 12px;
+  color: #007a8a;
+  background: #f0fdfa;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccfbf1;
+}
+
+.family-card-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.family-card-footer code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #0284c7;
+  background: #f0f9ff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.font-manrope {
+  font-family: 'Manrope', -apple-system, sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* TYPOGRAPHY SCALE TABLE */
+.typo-scale-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04);
+}
+
+.scale-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.scale-subnote {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.typo-scale-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.typo-scale-row {
+  display: grid;
+  grid-template-columns: 240px 1fr 110px;
+  gap: 24px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.typo-scale-row:last-child {
+  border-bottom: none;
+}
+
+.scale-meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scale-tag {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #1677ff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.scale-level {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.scale-specs {
+  font-size: 11px;
+  color: #64748b;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.scale-preview-col {
+  display: flex;
+  align-items: center;
+}
+
+.scale-preview-h1 {
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 850;
+  color: #0f172a;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.scale-preview-h1 em {
+  font-style: normal;
+  color: #1677ff;
+}
+
+.scale-preview-h2 {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.scale-preview-h3 {
+  font-size: 18.5px;
+  font-weight: 750;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.scale-preview-eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  color: #1677ff;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.scale-preview-lead {
+  font-size: 15.5px;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.scale-preview-body {
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.scale-preview-telemetry {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.telemetry-chip {
+  padding: 5px 12px;
+  border-radius: 7px;
+  background: #081a28;
+  color: #00c2d7;
+  font-size: 13.5px;
+  font-weight: 800;
+  border: 1px solid rgba(0, 194, 215, 0.3);
+}
+
+.telemetry-chip.green-stat {
+  color: #22c55e;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.scale-action-col {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.copy-css-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  font-size: 11.5px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.copy-css-btn:hover {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+@media (max-width: 980px) {
+  .typo-family-grid {
+    grid-template-columns: 1fr;
+  }
+  .typo-scale-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .scale-action-col {
+    justify-content: flex-start;
+  }
+}
+
