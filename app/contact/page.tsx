@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Clock3, Mail, MapPin, Phone } from "lucide-react";
+import { LinkedinIcon } from "@/components/icons";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContactForm } from "@/components/contact-form";
@@ -49,6 +50,13 @@ export default function Contact() {
                   <MapPin color="#1677ff" />
                   <strong>Operating from</strong>
                   <span>Bengaluru, India</span>
+                </div>
+                <div className="contact-card">
+                  <LinkedinIcon size={24} color="#1677ff" />
+                  <strong>LinkedIn</strong>
+                  <a href="https://www.linkedin.com/company/143909193" target="_blank" rel="noopener noreferrer">
+                    Trafenix on LinkedIn
+                  </a>
                 </div>
               </div>
               <p className="contact-note">
