@@ -47,8 +47,8 @@ export default function Contact() {
                 </div>
                 <div className="contact-card">
                   <MapPin color="#1677ff" />
-                  <strong>Global delivery</strong>
-                  <span>High-precision traffic analytics & survey data</span>
+                  <strong>Operating from</strong>
+                  <span>Bengaluru, India</span>
                 </div>
               </div>
               <p className="contact-note">
