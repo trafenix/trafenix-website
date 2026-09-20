@@ -69,7 +69,7 @@ export function ContactForm({ services, accessKey }: ContactFormProps) {
           }),
         });
 
-        const data = await res.json();
+        const data = (await res.json()) as Record<string, any>;
         if (!data.success) {
           throw new Error(data.message || "Failed to send message. Please check your details and try again.");
         }
@@ -95,7 +95,7 @@ export function ContactForm({ services, accessKey }: ContactFormProps) {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      const data = (await response.json()) as Record<string, any>;
 
       if (!response.ok || data.error) {
         throw new Error(data.error || "Failed to send message. Please try again.");

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body = (await request.json()) as Record<string, any>;
     const { name, email, company, location, service, details, botcheck } = body;
 
     // Honeypot spam protection
@@ -101,7 +101,7 @@ export async function POST(request: Request) {
         }),
       });
 
-      const data = await res.json();
+      const data = (await res.json()) as Record<string, any>;
       if (!data.success) {
         console.warn("Web3Forms server notice:", data.message || data.error);
         // If Web3Forms free tier requires client-side submission, don't fail the internal logger
