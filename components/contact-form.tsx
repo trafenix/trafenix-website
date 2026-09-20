@@ -244,7 +244,7 @@ export function ContactForm({ services, accessKey }: ContactFormProps) {
       </div>
 
       <p className="form-note">
-        Do not attach sensitive footage here. Trafenix will provide a private, time-limited upload link after reviewing your enquiry. Standard retention is 30 days after final delivery.
+        Do not attach sensitive footage here. Trafenix will provide a private, time-limited upload link after reviewing your enquiry. Standard retention is 90 days after final delivery.
       </p>
 
       <div className="form-actions full">

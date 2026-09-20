@@ -8,7 +8,7 @@ const proofPoints = [
   { value: "12", label: "traffic analysis services" },
   { value: "3", label: "AI, manual & hybrid modes" },
   { value: "24h", label: "standard project turnaround" },
-  { value: "30d", label: "secure footage retention" },
+  { value: "90d", label: "secure footage retention" },
 ];
 
 export default function Home() {
