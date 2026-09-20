@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { BrainCircuit, CheckCircle2, UsersRound } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { LinkedInCompanyCard } from "@/components/linkedin-company-card";
 
 export const metadata: Metadata = {
   title: "About",
@@ -22,19 +21,6 @@ export default function About() {
             <p>
               Founded in 2025, Trafenix Technologies is a specialist traffic video analytics company operating from Bengaluru, India.
             </p>
-          </div>
-        </section>
-
-        {/* LinkedIn Company Card Section */}
-        <section className="content-section" style={{ paddingBottom: "20px" }}>
-          <div className="shell">
-            <div className="section-head" style={{ marginBottom: "20px" }}>
-              <div>
-                <span className="eyebrow">Social Presence</span>
-                <h2>Official Company Profile</h2>
-              </div>
-            </div>
-            <LinkedInCompanyCard showSpecs={false} />
           </div>
         </section>
 
