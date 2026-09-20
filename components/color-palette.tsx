@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Check, Copy, Palette } from "lucide-react";
+import { Check, Copy } from "lucide-react";
 
 interface ColorItem {
   name: string;
   hex: string;
-  textColor?: string;
   innerText?: string;
   hasBorder?: boolean;
 }
@@ -40,29 +39,23 @@ export function ColorPaletteShowcase() {
   ];
 
   return (
-    <div className="color-showcase-container">
-      {/* Section Header */}
-      <div className="color-showcase-header">
-        <div className="color-header-left">
-          <span className="color-eyebrow">COLOUR SYSTEM</span>
-          <h2 className="color-main-title">Brand Colours</h2>
-        </div>
-        <div className="color-spec-pill">
-          <Palette size={14} color="#1677ff" />
-          <span>Click any swatch to copy HEX</span>
-        </div>
+    <div className="color-palette-card">
+      {/* Header aligned exactly like image */}
+      <div className="color-palette-header">
+        <span className="color-eyebrow">COLOUR SYSTEM</span>
+        <h2 className="color-main-title">Brand Colours</h2>
       </div>
 
-      {/* 1. PRIMARY SECTION */}
+      {/* 1. PRIMARY */}
       <div className="color-section-group">
         <span className="color-group-label">PRIMARY</span>
         <div className="color-swatch-grid grid-3">
           {primaryColors.map((color) => (
             <div
               key={color.hex}
-              className="color-card"
+              className="color-item-wrap"
               onClick={() => copyHex(color.hex)}
-              title="Click to copy HEX code"
+              title={`Click to copy ${color.hex}`}
             >
               <div
                 className="color-swatch-box large-swatch"
@@ -71,11 +64,11 @@ export function ColorPaletteShowcase() {
                 <div className="swatch-copy-overlay">
                   {copiedHex === color.hex ? (
                     <span className="swatch-copied-tag">
-                      <Check size={14} color="#22c55e" /> Copied!
+                      <Check size={13} color="#22c55e" /> Copied {color.hex}
                     </span>
                   ) : (
                     <span className="swatch-hover-hint">
-                      <Copy size={13} /> Copy HEX
+                      <Copy size={13} /> Copy {color.hex}
                     </span>
                   )}
                 </div>
@@ -89,30 +82,30 @@ export function ColorPaletteShowcase() {
         </div>
       </div>
 
-      {/* 2. TRAFFIC STATUS SECTION */}
+      {/* 2. TRAFFIC STATUS */}
       <div className="color-section-group">
         <span className="color-group-label">TRAFFIC STATUS</span>
         <div className="color-swatch-grid grid-3">
           {trafficStatusColors.map((color) => (
             <div
               key={color.hex}
-              className="color-card"
+              className="color-item-wrap"
               onClick={() => copyHex(color.hex)}
-              title="Click to copy HEX code"
+              title={`Click to copy ${color.hex}`}
             >
               <div
-                className="color-swatch-box large-swatch has-inner-text"
+                className="color-swatch-box large-swatch has-status-text"
                 style={{ backgroundColor: color.hex }}
               >
-                <span className="swatch-inner-text">{color.innerText}</span>
+                <span className="status-badge-text">{color.innerText}</span>
                 <div className="swatch-copy-overlay">
                   {copiedHex === color.hex ? (
                     <span className="swatch-copied-tag">
-                      <Check size={14} color="#22c55e" /> Copied!
+                      <Check size={13} color="#22c55e" /> Copied {color.hex}
                     </span>
                   ) : (
                     <span className="swatch-hover-hint">
-                      <Copy size={13} /> Copy HEX
+                      <Copy size={13} /> Copy {color.hex}
                     </span>
                   )}
                 </div>
@@ -126,16 +119,16 @@ export function ColorPaletteShowcase() {
         </div>
       </div>
 
-      {/* 3. NEUTRAL UI SECTION */}
-      <div className="color-section-group">
+      {/* 3. NEUTRAL UI */}
+      <div className="color-section-group" style={{ marginBottom: 0 }}>
         <span className="color-group-label">NEUTRAL UI</span>
         <div className="color-swatch-grid grid-4">
           {neutralColors.map((color) => (
             <div
               key={color.hex}
-              className="color-card"
+              className="color-item-wrap"
               onClick={() => copyHex(color.hex)}
-              title="Click to copy HEX code"
+              title={`Click to copy ${color.hex}`}
             >
               <div
                 className={`color-swatch-box small-swatch ${
@@ -146,7 +139,7 @@ export function ColorPaletteShowcase() {
                 <div className="swatch-copy-overlay">
                   {copiedHex === color.hex ? (
                     <span className="swatch-copied-tag">
-                      <Check size={14} color="#22c55e" /> Copied!
+                      <Check size={13} color="#22c55e" /> Copied
                     </span>
                   ) : (
                     <span className="swatch-hover-hint">
